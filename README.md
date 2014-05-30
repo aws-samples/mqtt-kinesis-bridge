@@ -21,7 +21,8 @@ unused in this example.
 Then install the Mosquitto MQTT Broker by following the instructions [here](http://mosquitto.org/download/), for
 your OS of choice.
 
-Once boto is configured with your credentials, run: 
+Once the Mosquitto broker is installed and boto is configured with your
+credentials, run:
 ````
 $ mosquitto
 $ python bridge.py <stream_name>
