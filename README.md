@@ -21,23 +21,29 @@ unused in this example.
 Then install the Mosquitto MQTT Broker by following the instructions [here](http://mosquitto.org/download/), for
 your OS of choice.
 
-Once the Mosquitto broker is installed and boto is configured with your
-credentials, run:
+Once the Mosquitto broker is installed and the AWS SDK for Python (aka. boto)
+is configured with your credentials, run:
 ````
 $ mosquitto
+````
+in one Terminal Window or Command Line Shell and then in another, run:
+````
 $ python bridge.py <stream_name>
 ````
 which will activate the [Mosquitto](http://mosquitto.org/) MQTT Broker and the MQTT-to-Kinesis Bridge
-example.
+example, respectively.
 
 To send an example message to the MQTT endpoint that will then flow to the
-Kinesis stream you should post it to the ```mqttkb``` topic at the endpoint.<br/>
+Kinesis stream named ```<stream_name>``` you should post the example message to
+the ```mqttkb``` MQTT topic.<br/>
 (Aside: ```mqttkb``` stands for "MQTT Kinesis Bridge")
 
 Here’s an example command using ```mosquitto_pub```:
 ````
 $ mosquitto_pub -h localhost -t "mqttkb/test" -m "howdy world_00”
 ````
+
+For detailed help and configuration options, enter: ```python bridge.py --help```
 
 Related Resources
 -----------------
