@@ -35,7 +35,7 @@ which will activate the [Mosquitto](http://mosquitto.org/) MQTT Broker and the M
 example, respectively.
 
 To send an example message to the MQTT endpoint that will then flow to the
-Kinesis stream named ```<stream_name>``` you should post the example message to
+Kinesis stream named ```<stream_name>``` you should post a message to
 the ```mqttkb``` MQTT topic.<br/>
 (Aside: ```mqttkb``` stands for "MQTT Kinesis Bridge")
 
