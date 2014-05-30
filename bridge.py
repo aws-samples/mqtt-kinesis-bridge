@@ -108,17 +108,18 @@ class MQTTKinesisBridge(object):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
-        description='''Create or attach to a Kinesis stream and put records in the stream''',
+        description='''Bridge a MQTT Broker to a Kinesis stream. All messages
+on a particular topic will be sent downstream as records.''',
         formatter_class=RawTextHelpFormatter)
     parser.add_argument('stream_name',
                         help='''the name of the Kinesis stream to connect''')
     parser.add_argument('--host_name', default='localhost',
-                        help="""the name of the MQTT host to connect [default: 'localhost']""")
+                        help='''the name of the MQTT host to connect [default: 'localhost']''')
     parser.add_argument('--topic_name', default='mqttkb/+',
-                        help="""the name of the MQTT topic to connect [default: 'mqttkb/+']""")
+                        help='''the name of the MQTT topic to connect [default: 'mqttkb/+']''')
 
     args = parser.parse_args()
-    stream = get_stream(args.stream_name)
+    kinesis_stream = get_stream(args.stream_name)
     bridge = MQTTKinesisBridge(
         mqtt_host=args.host_name,
         mqtt_topic_name=args.topic_name,
