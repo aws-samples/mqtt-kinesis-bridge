@@ -23,11 +23,11 @@ Then install the Mosquitto MQTT Broker by following the instructions [here](http
 your OS of choice.
 
 Once the Mosquitto broker is installed and the AWS SDK for Python is configured
-with your credentials, run:
+with your credentials, in one Terminal Window or Command Line Shell run:
 ````
 $ mosquitto
 ````
-in one Terminal Window or Command Line Shell and then in another, run:
+and then in another, run:
 ````
 $ python bridge.py <stream_name>
 ````
