@@ -13,16 +13,17 @@ $ pip install boto
 $ pip install paho-mqtt
 ````
 and follow the instructions [here](http://docs.pythonboto.org/en/latest/getting_started.html#configuring-boto-credentials) to
-get your credentials setup in boto for use. The credentials you use should
-permit at least these Kinesis actions: ``` CreateStream, DescribeStream, GetRecords, GetShardIterator, ListStreams &
+get your credentials setup in the AWS SDK for Python (aka. boto) for use. The
+credentials you use should permit at least these Kinesis actions:
+``` CreateStream, DescribeStream, GetRecords, GetShardIterator, ListStreams &
 PutRecord```. Both the ```MergeShards``` and ```SplitShard``` actions are
 unused in this example.
 
 Then install the Mosquitto MQTT Broker by following the instructions [here](http://mosquitto.org/download/), for
 your OS of choice.
 
-Once the Mosquitto broker is installed and the AWS SDK for Python (aka. boto)
-is configured with your credentials, run:
+Once the Mosquitto broker is installed and the AWS SDK for Python is configured
+with your credentials, run:
 ````
 $ mosquitto
 ````
