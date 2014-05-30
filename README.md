@@ -52,3 +52,4 @@ Related Resources
 * [AWS SDK for Python](http://aws.amazon.com/sdkforpython)
 * [Paho MQTT](http://eclipse.org/paho/)
 * [Mosquitto Broker](http://mosquitto.org/)
+* [Apache 2.0 License](http://aws.amazon.com/apache2.0)
