@@ -12,17 +12,36 @@ and paho-mqtt 0.4.91+ using:
 $ pip install boto
 $ pip install paho-mqtt
 ````
-and follow the instructions [here](http://docs.pythonboto.org/en/latest/getting_started.html#configuring-boto-credentials) to get your credentials setup in boto for use. The credentials you use should permit at least these Kinesis actions: ``` CreateStream, DescribeStream, GetRecords, GetShardIterator, ListStreams & 
-PutRecord```. Both the ```MergeShards``` and ```SplitShard``` actions are 
+and follow the instructions [here](http://docs.pythonboto.org/en/latest/getting_started.html#configuring-boto-credentials) to
+get your credentials setup in boto for use. The credentials you use should
+permit at least these Kinesis actions: ``` CreateStream, DescribeStream, GetRecords, GetShardIterator, ListStreams &
+PutRecord```. Both the ```MergeShards``` and ```SplitShard``` actions are
 unused in this example.
+
+Then install the Mosquitto MQTT Broker by following the instructions [here](http://mosquitto.org/download/), for
+your OS of choice.
 
 Once boto is configured with your credentials, run: 
 ````
-$ TBD
-```` 
+$ mosquitto
+$ python bridge.py <stream_name>
+````
+which will activate the [Mosquitto](http://mosquitto.org/) MQTT Broker and the MQTT-to-Kinesis Bridge
+example.
+
+To send an example message to the MQTT endpoint that will then flow to the
+Kinesis stream you should post it to the ```mqttkb``` topic at the endpoint.<br/>
+(Aside: ```mqttkb``` stands for "MQTT Kinesis Bridge")
+
+Here’s an example command using ```mosquitto_pub```:
+````
+$ mosquitto_pub -h localhost -t "mqttkb/test" -m "howdy world_00”
+````
 
 Related Resources
 -----------------
 * [Amazon Kinesis Developer Guide](http://docs.aws.amazon.com/kinesis/latest/dev/introduction.html)  
 * [Amazon Kinesis API Reference](http://docs.aws.amazon.com/kinesis/latest/APIReference/Welcome.html)
 * [AWS SDK for Python](http://aws.amazon.com/sdkforpython)
+* [Paho MQTT](http://eclipse.org/paho/)
+* [Mosquitto Broker](http://mosquitto.org/)
