@@ -39,7 +39,8 @@ Kinesis stream named ```<stream_name>``` you should post a message to
 the ```mqttkb``` MQTT topic.<br/>
 (Aside: ```mqttkb``` stands for "MQTT Kinesis Bridge")
 
-In a third window you might run an example command using ```mosquitto_pub```:
+In a third window you might run the following ```mosquitto_pub``` command to
+submit an MQTT message to the ```localhost``` broker:
 ````
 $ mosquitto_pub -h localhost -t "mqttkb/test" -m "howdy world_00”
 ````
