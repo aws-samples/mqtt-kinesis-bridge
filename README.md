@@ -32,7 +32,11 @@ and then in another, run the Kinesis Bridge:
 $ python bridge.py <stream_name>
 ````
 which will activate the [Mosquitto](http://mosquitto.org/) MQTT Broker and the
-MQTT-to-Kinesis Bridge example, respectively.
+MQTT-to-Kinesis Bridge example, respectively. 
+The defaults for the bridge is to connect to us-east-1, however you can specify the region with the --region argument
+````
+$ python bridge.py <stream_name> --region <region>
+````
 
 To send an example message to the MQTT endpoint that will then flow to the
 Kinesis stream named ```<stream_name>``` you should post a message to
