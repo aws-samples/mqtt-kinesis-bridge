@@ -1,3 +1,2 @@
-boto>=2.29.0
-paho-mqtt>=0.9.1
-wsgiref==0.1.2
+boto==2.36.0
+paho-mqtt==1.1
