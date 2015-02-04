@@ -98,13 +98,14 @@ class MQTTKinesisBridge(object):
         self.add_records(records=[msg.payload])
         self.put_all_records(partition_key=msg.topic)
 
-    def on_connect(self, mqttc, userdata,flags, msg):
+    def on_connect(self, mqttc, userdata, flags, msg):
         rc = mqttc.subscribe(self.mqtt_topic_name, 0)
-	print('Connection Msg: '.format(msg))
+        print('Connection Msg: '.format(msg))
         print('Subscribe topic: {0} RC: {1}'.format(self.mqtt_topic_name, rc))
 
 
 if __name__ == '__main__':
+    import platform
     parser = argparse.ArgumentParser(
         description='''Bridge a MQTT Broker to a Kinesis stream. All messages
 on a particular topic will be sent downstream as records.''',
@@ -120,6 +121,14 @@ on a particular topic will be sent downstream as records.''',
 
     args = parser.parse_args()
     kinesis = boto.kinesis.connect_to_region(args.region)
+
+    # add specific user agent for request tracking
+    boto.UserAgent = 'mqttkb Boto/{0} Python/{1} {2}/{3}'.format(
+        boto.__version__,
+        platform.python_version(),
+        platform.system(),
+        platform.release()
+    )
     kinesis_stream = get_stream(args.stream_name)
     bridge = MQTTKinesisBridge(
         mqtt_host=args.host_name,
